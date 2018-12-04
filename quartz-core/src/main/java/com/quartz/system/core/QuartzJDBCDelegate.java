@@ -39,6 +39,8 @@ public class QuartzJDBCDelegate implements DriverDelegate, QuartzJDBCConstants {
 
     protected boolean useProperties;
 
+    protected String scheduleName;
+
     /*
      * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      *
@@ -59,6 +61,7 @@ public class QuartzJDBCDelegate implements DriverDelegate, QuartzJDBCConstants {
         this.logger = logger;
         this.tablePrefix = tablePrefix;
         this.instanceId = instanceId;
+        this.scheduleName = QuartzJobStoreSupport.scheduleName;
     }
 
     /**
@@ -75,6 +78,7 @@ public class QuartzJDBCDelegate implements DriverDelegate, QuartzJDBCConstants {
         this.tablePrefix = tablePrefix;
         this.instanceId = instanceId;
         this.useProperties = useProperties.booleanValue();
+        this.scheduleName = QuartzJobStoreSupport.scheduleName;
     }
 
     /*
@@ -3166,7 +3170,8 @@ public class QuartzJDBCDelegate implements DriverDelegate, QuartzJDBCConstants {
      * @return the query, with proper table prefix substituted
      */
     protected final String rtp(String query) {
-        return MessageFormat.format(query, new Object[]{tablePrefix, "'" + instanceId + "'"});
+
+        return MessageFormat.format(query, new Object[]{tablePrefix, "'" + scheduleName + "'"});
     }
 
     /**
