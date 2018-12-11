@@ -37,16 +37,16 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         <property name="triggers">
             <list>
                 <!--设置定时任务触发列表-->
-                <ref bean="quartz02_trigger01"/>
-                <ref bean="quartz02_trigger02"/>
-                <ref bean="quartz02_trigger03"/>
-                <ref bean="quartz02_trigger04"/>
+                <ref bean="quartz01_trigger01"/>
+                <ref bean="quartz01_trigger02"/>
+                <ref bean="quartz01_trigger03"/>
+                <ref bean="quartz01_trigger04"/>
             </list>
         </property>
     </bean>
 
     <!--job1-->
-    <bean id="quartz02_job01" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
+    <bean id="quartz01_job01" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
         <property name="jobClass" value="com.quartz.system.base.SendQuartJob"/>
         <property name="shouldRecover" value="false"/>
         <property name="concurrent" value="false"/>
@@ -58,13 +58,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         </property>
     </bean>
     <!-- 每两秒执行一次-->
-    <bean id="quartz02_trigger01" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="quartz02_job01"/>
+    <bean id="quartz01_trigger01" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="quartz01_job01"/>
         <property name="cronExpression" value="0/2 * * * * ? *"/>
     </bean>
 
     <!--job2-->
-    <bean id="quartz02_job02" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
+    <bean id="quartz01_job02" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
         <property name="jobClass" value="com.quartz.system.base.SendQuartJob"/>
         <property name="shouldRecover" value="false"/>
         <property name="concurrent" value="false"/>
@@ -76,13 +76,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         </property>
     </bean>
     <!-- 每分钟执行一次-->
-    <bean id="quartz02_trigger02" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="quartz02_job02"/>
+    <bean id="quartz01_trigger02" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="quartz01_job02"/>
         <property name="cronExpression" value="0 0/1 * * * ? "/>
     </bean>
 
     <!--job3-->
-    <bean id="quartz02_job03" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
+    <bean id="quartz01_job03" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
         <property name="jobClass" value="com.quartz.system.base.SendQuartJob"/>
         <property name="shouldRecover" value="false"/>
         <property name="concurrent" value="false"/>
@@ -94,13 +94,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         </property>
     </bean>
     <!-- 每45秒执行一次-->
-    <bean id="quartz02_trigger03" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="quartz02_job03"/>
+    <bean id="quartz01_trigger03" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="quartz01_job03"/>
         <property name="cronExpression" value="0/45 * * * * ? "/>
     </bean>
 
     <!--job4-->
-    <bean id="quartz02_job04" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
+    <bean id="quartz01_job04" class="com.quartz.system.base.MethodInvokingJobDetailFactoryBean">
         <property name="jobClass" value="com.quartz.system.base.SendQuartJob"/>
         <property name="shouldRecover" value="false"/>
         <property name="concurrent" value="false"/>
@@ -112,8 +112,8 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
         </property>
     </bean>
     <!-- 每30秒执行一次-->
-    <bean id="quartz02_trigger04" class="org.springframework.scheduling.quartz.CronTriggerBean">
-        <property name="jobDetail" ref="quartz02_job04"/>
+    <bean id="quartz01_trigger04" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="quartz01_job04"/>
         <property name="cronExpression" value="0/10 * * * * ? *"/>
     </bean>
 

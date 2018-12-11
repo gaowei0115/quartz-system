@@ -9,10 +9,10 @@ import java.util.Date;
  */
 public abstract class JobBase {
 
-    public static final String projectName = "quartz02";
+    public static final String projectName = "quartz01";
 
     public void run(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
         String name = Thread.currentThread().getName();
         long id = Thread.currentThread().getId();
         String threadName = name + "-" + id;
