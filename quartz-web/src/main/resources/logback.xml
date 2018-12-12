@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				[quartz-web]%date [%thread] %-5level [%X{UUID}] - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="asyncConsole" class="ch.qos.logback.classic.AsyncAppender">
+		<discardingThreshold >0</discardingThreshold>
+		<queueSize>512</queueSize>
+		<appender-ref ref="console"/>
+	</appender>
+	
+
+	<root level="DEBUG">
+		<appender-ref ref="asyncConsole"/>
+	</root>
+
+	<logger name="org.quartz.core" level="DEBUG"/>
+
+	<logger name="org.springframework" level="ERROR"/>
+	
+</configuration>
